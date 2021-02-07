@@ -69,6 +69,7 @@ function onLoadUsersReject(response) {
 }
 */
 
+/*
 //promise
 let isMoneyEnough = true;
 
@@ -103,3 +104,22 @@ async function getCar() {
     console.log(error.message);
   }
 }
+*/
+
+/*
+создать промис по получению случайного числа из функции (0-10)
+которое больше 5
+*/
+
+const getNumberBiggerThan5 = new Promise(someFun);
+
+function someFun(resolve, reject) {
+  const number = Math.random() * 10;
+  console.log(number);
+  if (number >= 5) resolve(number);
+  else {
+    reject(new Error());
+  }
+}
+
+console.log(getNumberBiggerThan5);
