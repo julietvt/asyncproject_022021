@@ -50,12 +50,17 @@ request.onload = function () {
 console.log(store);
 */
 
-fetch('../data/users.json').then(onLoadUsersResolve).catch(onLoadUsersReject);
+fetch('../data/users.json')
+  .then(parseData)
+  .then(logData)
+  .catch(onLoadUsersReject);
 
-function onLoadUsersResolve(response) {
-  console.log(response);
-  const result = response.json();
-  console.log(result);
+function parseData(response) {
+  return response.json();
+}
+
+function logData(data) {
+  console.log(data);
 }
 
 function onLoadUsersReject(response) {
