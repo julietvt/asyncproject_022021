@@ -50,6 +50,7 @@ request.onload = function () {
 console.log(store);
 */
 
+/*
 fetch('../data/users.json')
   .then(parseData)
   .then(logData)
@@ -65,4 +66,40 @@ function logData(data) {
 
 function onLoadUsersReject(response) {
   console.log(response);
+}
+*/
+
+//promise
+let isMoneyEnough = true;
+
+let buyNewCar = new Promise(function (resolve, reject) {
+  if (isMoneyEnough) {
+    let newCar = { model: 'reno123', color: 'black', year: 1984, price: 500 };
+    resolve(newCar);
+  } else {
+    let reason = new Error('To be continue...))');
+    reject(reason);
+  }
+});
+
+let getCar = function () {
+  buyNewCar
+    .then(function (result) {
+      console.log(result);
+    })
+    .catch(function (error) {
+      console.log(error.message);
+    });
+};
+
+getCar();
+
+// async-await - вызов функции асинхронно
+
+async function getCar() {
+  try {
+    let newMyCar = await buyNewCar; // ждем промис
+  } catch (error) {
+    console.log(error.message);
+  }
 }
